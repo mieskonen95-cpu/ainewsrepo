@@ -1,17 +1,12 @@
 name: Publish
 
+# Posts are written by a scheduled Claude Code task (see ROUTINE.md), which uses the owner's
+# Claude subscription. This workflow needs no secrets: it only merges content and deploys.
 on:
-  schedule:
-    - cron: "17 5 * * *"   # daily 05:17 UTC
-  workflow_dispatch:
-    inputs:
-      force:
-        description: "Write a new post even if today's exists"
-        type: boolean
-        default: false
   push:
-    branches: [main]
-    paths: ["content/**", "site/**"]   # manual edits redeploy without calling the model
+    branches: [main, "claude/**"]
+    paths: ["content/**", "memory/**", "metrics/**", "site/**", "playbook.md", "sources.yaml"]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -23,37 +18,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  produce:
-    if: github.event_name != 'push'
+  sync:
+    # The routine pushes to main when it can; otherwise to its session branch, merged here.
+    if: github.event_name == 'push' && github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    env:
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - uses: actions/checkout@v5
-        with: { fetch-depth: 0 }
-      - uses: actions/setup-python@v6
-        with: { python-version: "3.12", cache: pip }
-      - run: pip install -r requirements.txt
-      - name: Production loop
-        run: python -m agent.produce ${{ inputs.force && '--force' || '' }}
-      - name: Commit post
+        with: { ref: main, fetch-depth: 0 }
+      - name: Merge content-only changes into main
         run: |
+          git fetch origin "$GITHUB_REF"
+          changed=$(git diff --name-only origin/main...FETCH_HEAD)
+          echo "$changed"
+          bad=$(echo "$changed" | grep -vE '^(content/|memory/|metrics/|playbook\.md$|sources\.yaml$)' || true)
+          if [ -n "$bad" ]; then
+            echo "::notice::Not auto-merging: branch changes files outside content paths:"; echo "$bad"
+            echo "skip=1" >> "$GITHUB_ENV"; exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content memory metrics
-          git diff --cached --quiet || git commit -m "post: $(date -u +%F)"
-      - name: Learning loop (runs only every 4 new issues)
-        run: python -m agent.learn
-      - name: Commit learning
-        run: |
-          git add playbook.md sources.yaml memory metrics
-          if ! git diff --cached --quiet; then git commit -F .learn-commit-msg; fi
-          git push
+          git merge --no-edit FETCH_HEAD
+          git push origin main
 
   deploy:
-    needs: produce
-    if: always() && (needs.produce.result == 'success' || needs.produce.result == 'skipped')
+    needs: sync
+    if: always() && (needs.sync.result == 'success' || needs.sync.result == 'skipped')
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -62,8 +51,8 @@ jobs:
       - uses: actions/checkout@v5
         with: { ref: main }
       - uses: actions/setup-python@v6
-        with: { python-version: "3.12", cache: pip }
-      - run: pip install -r requirements.txt
+        with: { python-version: "3.12" }
+      - run: pip install markdown==3.7 pyyaml==6.0.2
       - id: pages
         uses: actions/configure-pages@v5
       - run: python site/build.py
