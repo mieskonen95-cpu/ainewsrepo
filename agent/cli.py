@@ -2,7 +2,9 @@
 
   python -m agent.cli gather                 # fresh feed items as JSON (stdout)
   python -m agent.cli recent                 # recent post files, to avoid repeats
-  python -m agent.cli finalize POST REVIEW   # enforce the publish gate, write metrics
+  python -m agent.cli finalize POST REVIEW [--strip]
+                                             # enforce the publish gate, write metrics;
+                                             # --strip deletes sentences with flagged claims
   python -m agent.cli reject DATE REVIEW     # record a day that failed the gate
   python -m agent.cli learn-due              # exit 0 if a learning cycle is due
   python -m agent.cli learn-signals          # signals for the learning cycle as YAML
@@ -13,6 +15,7 @@ from __future__ import annotations
 
 import calendar
 import datetime as dt
+import re
 import difflib
 import json
 import pathlib
@@ -86,7 +89,34 @@ def _review(path):
     return r
 
 
-def finalize(post_path, review_path):
+def strip_claims(body, claims):
+    """Delete each sentence (or list item) that contains a flagged claim. Returns (body, missing)."""
+    missing = []
+    for claim in claims:
+        needle = claim.strip().strip('"\'').rstrip(".")
+        idx = body.find(needle)
+        if idx < 0:
+            missing.append(claim)
+            continue
+        line_start = body.rfind("\n", 0, idx) + 1
+        line_end = body.find("\n", idx)
+        line_end = len(body) if line_end < 0 else line_end
+        line = body[line_start:line_end]
+        parts = re.split(r"(?<=[.!?])\s+", line)
+        offset, kept = 0, []
+        for part in parts:
+            start = line.find(part, offset)
+            offset = start + len(part)
+            if not (start <= idx - line_start < offset):
+                kept.append(part)
+        new_line = " ".join(kept).strip()
+        if re.fullmatch(r"(?:[-*]|\d+\.)\s*", new_line or "-"):
+            new_line = ""
+        body = body[:line_start] + new_line + body[line_end:]
+    return re.sub(r"\n{3,}", "\n\n", body), missing
+
+
+def finalize(post_path, review_path, *flags):
     post = pathlib.Path(post_path).resolve()
     raw = post.read_text(encoding="utf-8")
     if not raw.startswith("---"):
@@ -101,6 +131,12 @@ def finalize(post_path, review_path):
     if not post.name.startswith(str(meta["date"])):
         die("file name must start with the post date")
     r = _review(review_path)
+    if r.get("unsupported_claims") and "--strip" in flags:
+        body, missing = strip_claims(body, r["unsupported_claims"])
+        if missing:
+            die(f"flagged claims not found verbatim in the post, cannot strip: {missing}")
+        r["stripped_claims"], r["unsupported_claims"] = r["unsupported_claims"], []
+        print(f"stripped {len(r['stripped_claims'])} flagged claim(s)")
     if r.get("unsupported_claims"):
         die(f"unsupported claims remain: {r['unsupported_claims']}")
     if r["overall"] < MIN_SCORE:
