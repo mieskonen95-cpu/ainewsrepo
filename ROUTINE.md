@@ -59,7 +59,9 @@ Then append the review to `.routine/reviews.json` (a JSON list).
 python -m agent.cli finalize content/posts/$DATE-<slug>.md .routine/review.json
 ```
 If it prints `GATE FAILED`, revise the post per the review and repeat steps 4–5. At most
-2 revisions. If it still fails, delete the post and run
+2 revisions. In the last revision, **delete** every claim the editor flagged as unsupported
+(and any sentence that depends on it) instead of rephrasing it: a shorter post that passes beats
+no post. If it still fails, delete the post and run
 `python -m agent.cli reject $DATE .routine/review.json`.
 
 ## 6. Learning (only when due)
