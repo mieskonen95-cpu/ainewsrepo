@@ -1,8 +1,8 @@
 # Daily routine
 
 A scheduled Claude Code session runs this file once a day. It uses your Claude subscription,
-so it needs no API key. Helpers in `agent/cli.py` enforce the checks; GitHub Actions deploys
-the site when the post lands on `main`.
+so it needs no API key. Helpers in `agent/cli.py` enforce the checks. The session pushes only to a
+`claude/` branch; GitHub Actions merges content-only changes into `main` and deploys.
 
 Work in the repository root. Run every step yourself, in order, without asking questions:
 nobody is watching this run. If a step fails, follow its instructions and don't improvise.
@@ -59,7 +59,9 @@ Then append the review to `.routine/reviews.json` (a JSON list).
 python -m agent.cli finalize content/posts/$DATE-<slug>.md .routine/review.json
 ```
 If it prints `GATE FAILED`, revise the post per the review and repeat steps 4–5. At most
-2 revisions. If it still fails, delete the post and run
+2 revisions. In the last revision, **delete** every claim the editor flagged as unsupported
+(and any sentence that depends on it) instead of rephrasing it: a shorter post that passes beats
+no post. If it still fails, delete the post and run
 `python -m agent.cli reject $DATE .routine/review.json`.
 
 ## 6. Learning (only when due)
@@ -82,13 +84,16 @@ Run `python -m agent.cli learn-due`. If it exits non-zero, skip to step 7. Other
    `{"accepted": bool, "reasoning": "...", "old_scores": [...], "new_scores": [...], "added": [...], "removed": [...]}`
    and run `python -m agent.cli learn-record .routine/learn.json`.
 
-## 7. Commit and push
+## 7. Commit and push (never to `main`)
 ```bash
+git checkout -b "claude/daily-$DATE"
 git add content memory metrics playbook.md sources.yaml
 git commit -m "post: $DATE"          # add a learn line and the reasoning if step 6 ran
-git push origin HEAD:main
+git push origin "claude/daily-$DATE"
 ```
-If pushing to `main` is refused, push to the branch this session was assigned instead. The
-`Publish` workflow merges such branches into `main` (content files only) and deploys.
+Never push to `main`, and never commit files outside those paths. The `Publish` workflow merges
+the branch into `main` only if it changes nothing but content paths, then deploys. If pushing
+`claude/daily-$DATE` is refused, push to the branch this session was assigned (it starts with
+`claude/`).
 
 Finish with a two-line summary: the post title and score, and the learning outcome if one ran.

@@ -15,7 +15,8 @@ its own playbook — but only if the change wins a replay eval.
 | Site | whenever a post lands on `main` | Markdown → static HTML + RSS → GitHub Pages | `.github/workflows/publish.yml`, `site/build.py` |
 
 The writing runs as a **Claude Code scheduled task** on the owner's Claude subscription, so it
-needs **no API key**. GitHub Actions needs no secrets: it only merges content and deploys.
+needs **no API key**. The task never pushes to `main`: it pushes a `claude/daily-*` branch, and GitHub
+Actions merges it only if it touches content paths alone, then deploys. GitHub Actions needs no secrets.
 
 ### What can change (all in git, so every self-change is a diff you can revert)
 - `playbook.md` — voice, structure, story selection (edited by the learning loop)
