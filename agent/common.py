@@ -57,9 +57,10 @@ def _check(resp) -> None:
 
 def structured(schema: type[T], system: str, user: str, effort: str = "high") -> T:
     """One call that returns a validated pydantic object."""
-    resp = client.beta.messages.parse(
+    # Streaming avoids HTTP timeouts on long, thinking-heavy calls.
+    with client.beta.messages.stream(
         model=MODEL,
-        max_tokens=16000,
+        max_tokens=32000,
         betas=BETAS,
         fallbacks="default",
         thinking={"type": "adaptive"},
@@ -67,7 +68,8 @@ def structured(schema: type[T], system: str, user: str, effort: str = "high") ->
         system=system,
         messages=[{"role": "user", "content": user}],
         output_format=schema,
-    )
+    ) as stream:
+        resp = stream.get_final_message()
     _check(resp)
     return resp.parsed_output
 
@@ -77,9 +79,9 @@ def research(system: str, user: str, max_searches: int = 15) -> str:
     tools = [{"type": "web_search_20260209", "name": "web_search", "max_uses": max_searches}]
     messages = [{"role": "user", "content": user}]
     for _ in range(8):
-        resp = client.beta.messages.create(
+        with client.beta.messages.stream(
             model=MODEL,
-            max_tokens=32000,
+            max_tokens=64000,
             betas=BETAS,
             fallbacks="default",
             thinking={"type": "adaptive"},
@@ -87,7 +89,8 @@ def research(system: str, user: str, max_searches: int = 15) -> str:
             system=system,
             tools=tools,
             messages=messages,
-        )
+        ) as stream:
+            resp = stream.get_final_message()
         if resp.stop_reason == "pause_turn":  # long server-tool turn: send it back to continue
             messages.append({"role": "assistant", "content": resp.content})
             continue
