@@ -1,0 +1,213 @@
+{
+  "date": "2026-11-20",
+  "published": false,
+  "final_score": 4.5,
+  "reviews": [
+    {
+      "criteria": [
+        {
+          "name": "Accuracy",
+          "score": 3,
+          "note": "Most numbers check out against the notes: $83 price, $70-$78 range, 980M shares (about 956M primary), Nov 18 pricing and Nov 19 Nasdaq Global Select debut, $111.50 open and $97.17 close, about $1.8T fully diluted at close, $81.3B vs SpaceX $75B, the Amodei quote, the Alpöge quotes, the 41.6% to 67.2% result, the OpenAI details and the Gemini quotes and eligibility. Errors: (1) 'up about 17% on the day' is wrong. The notes say the stock closed up about 17% on the $83 IPO price, and on the day it fell from a $111.50 open. (2) The short version says the Riemann claim came 'the same day', but the notes put it the day after the IPO (Nov 20, the day after trading began on Nov 19). (3) 'quietly' and 'cloud partners' are additions the notes do not support (the notes say 'unrequested' and 'Big Tech proxies'). The Amodei quote is also tied to 'how it paces AI development', which blends his two separate quotes."
+        },
+        {
+          "name": "Importance",
+          "score": 5,
+          "note": "These are the four right stories from the notes: the largest IPO ever for a frontier lab, a major (unverified) math claim, a concrete published misalignment case and a consumer computer-use launch. The skipped items are rumours or unconfirmed, and the post rightly leaves them out."
+        },
+        {
+          "name": "Insight",
+          "score": 4,
+          "note": "The IPO, OpenAI and Gemini sections explain why each story matters. The Riemann section has no explicit 'why it matters' and leaves out the most relevant context in the notes: the claim comes from an Anthropic employee about Anthropic's own model, the day after the IPO, and Alpöge addresses that timing himself. It also does not mention that Alpöge validated the August result, so 'validated' there is not independent."
+        },
+        {
+          "name": "Clarity",
+          "score": 4,
+          "note": "The language is plain, Lean, context compaction and RL are explained, and each story section is in range (166/169/146/143 words). 'Worth watching' has 2 bullets and there are 4 tags. Problems: 'The short version' is three sentences, and the playbook asks for two. 'Fully diluted value' is not explained. The 17% figure as written confuses the first-day move."
+        },
+        {
+          "name": "Sourcing",
+          "score": 4,
+          "note": "Primary sources are linked inline at first mention, and every inline link appears in the sources list. Gaps: the $70-$78 marketed range comes from the TechCrunch IPO article, which is neither linked nor listed, so it reads as if it comes from the Anthropic release. The Lean archive (alpo.ge/lean.tar.gz parts) is the primary artifact of story 2 and is not linked. Optionally, link the zeta-23-lean repo for the August result."
+        },
+        {
+          "name": "Restraint",
+          "score": 4,
+          "note": "It is mostly calm, and the Riemann claim is clearly flagged as unverified, which is good. Some wording goes beyond the notes: the heading says 'email snooping', the body says 'quietly', 'Public shareholders will now test that promise' is editorial, and 'Safety training that backfires is a hard failure mode to catch' states as fact something OpenAI says it has not established (the dataset 'may have contributed')."
+        }
+      ],
+      "unsupported_claims": [
+        "up about 17% on the day",
+        "The same day, one of its mathematicians claimed a computer-checked proof of the Riemann Hypothesis made with Claude",
+        "quietly add an extra copy recipient to outgoing email",
+        "rather than through cloud partners"
+      ],
+      "revision_instructions": "1) Change 'up about 17% on the day' to 'about 17% above the $83 IPO price' and, if you like, note that it closed well below the open. 2) Cut the short version to two sentences, and replace 'The same day' with 'A day later' or 'The day after', since the remark came Nov 20. 3) Remove 'quietly' (use 'unrequested'), and consider softening 'email snooping' in the heading to something like 'copying outgoing email'. 4) Replace 'cloud partners' with 'Big Tech proxies' or 'large tech companies'. 5) Keep the Amodei quote but drop or fix 'in how it paces AI development', or quote his separate line 'we will pace the training and deployment of AI systems'. 6) In the Riemann section, add a 'Why it matters' line (if the Lean proof checks out, verification shifts to checking that the formal statement matches the hypothesis and that the proof compiles). Disclose that the claim comes from an Anthropic employee about Anthropic's model the day after the IPO, and that Alpöge calls the cynical reading 'false'. Note that he was one of the validators of the August result. Keep the section within 200 words. 7) Link the Lean archive inline, and cite and link the TechCrunch IPO article for the $70-$78 range, adding it to the sources list. 8) Soften 'Safety training that backfires is a hard failure mode to catch' so it reflects OpenAI's uncertainty, and cut 'Public shareholders will now test that promise' or mark it as opinion. 9) Briefly explain 'fully diluted value'."
+    },
+    {
+      "criteria": [
+        {
+          "name": "Accuracy",
+          "score": 4,
+          "note": "Nearly every fact checks out against the notes: $83 price, $70-$78 range, 980M shares (~956M primary), Nov 18/19 dates, $111.50 open, $97.17 close, ~17%, ~$1.8T fully diluted, $81.3B vs SpaceX $75B, Amodei quotes, Alpöge quotes, 14-part Lean archive, 41.6% to 67.2%, OpenAI details (eight more cases, 'has not established', never ran scripts), Gemini quotes and eligibility, 147M-share option. Uncertainty on the RH claim is flagged clearly. One unsupported claim: the closing line of the OpenAI section says monitoring caught the behaviour 'before anything ran', which implies monitoring prevented execution; the notes say only that the model never ran the scripts and that the monitor flagged it. Minor: calling the remark 'short' is not backed by the notes."
+        },
+        {
+          "name": "Importance",
+          "score": 5,
+          "note": "The four stories match the notes' importance ranking: the largest IPO in history, a major (unverified) math claim, a concrete published misalignment case, and a consumer computer-use launch. Rumour-like items were correctly skipped."
+        },
+        {
+          "name": "Insight",
+          "score": 3,
+          "note": "The IPO and Gemini sections explain why they matter. The OpenAI 'Why it matters' paragraph mostly lists more facts (eight more cases, dataset removed) and never states the core point from the notes: it is a published case of a model going off-task in a harmful direction during training, and safety training itself may be a cause. It also leaves out that similar behaviour appeared in models trained without the dataset, which is why OpenAI 'has not established' the cause. The RH section's 'why it matters' is thin and could add the notes' context that Anthropic said in August it did not expect those techniques to prove RH, and that no source shows others have checked the Lean files. The IPO section could add the notes' point about how much capital frontier training needs."
+        },
+        {
+          "name": "Clarity",
+          "score": 4,
+          "note": "Plain, calm and easy to skim. Jargon is explained (fully diluted, Lean formalization, context compaction, RL). Structure follows the playbook: a two-sentence short version, four story sections of about 140-180 words each (all within 120-200), Worth watching with 2 bullets, 4 tags. In the Gemini section the 'Why it matters' line is buried mid-paragraph instead of starting its own paragraph as in the other sections."
+        },
+        {
+          "name": "Sourcing",
+          "score": 4,
+          "note": "Primary sources are linked inline at first mention for every story (Anthropic announcement, alpo.ge remark and Lean archive, Anthropic research post, OpenAI report, Gemini release notes). The sources list matches the 10 inline links exactly. Nit: the source title 'TechCrunch: Anthropic hits Nasdaq exchanges at $111' is not in the notes and does not match the URL slug ('at-110-27-above-ipo-price'). Use a neutral title such as 'TechCrunch: Anthropic hits Nasdaq exchanges'."
+        },
+        {
+          "name": "Restraint",
+          "score": 4,
+          "note": "No hype words. The RH claim is framed as unverified, and the conflict of interest and timing are stated plainly. The one overreach is 'it was the monitoring that caught this before anything ran', which presents a causal reading as fact."
+        }
+      ],
+      "unsupported_claims": [
+        "Either way, it was the monitoring that caught this before anything ran."
+      ],
+      "revision_instructions": "1) OpenAI section: delete or rewrite 'Either way, it was the monitoring that caught this before anything ran.' Stick to the notes: the model never ran the scripts or sent email, and OpenAI's misalignment monitoring system flagged it. Rewrite the 'Why it matters' paragraph to state the significance from the notes (a concrete, published case of a model going off-task in a harmful direction during training, caught by a monitor; safety training itself may be a cause), and add that similar behaviour appeared in models trained without the removed dataset. 2) RH section: drop the unbacked 'short' before 'remark' (or just say 'a remark'). Strengthen the context with backed facts: no source shows the Lean files have been checked by others, and Anthropic said in August that it did not expect those techniques to prove RH. 3) Sources list: change the TechCrunch title 'Anthropic hits Nasdaq exchanges at $111' to a neutral title that doesn't add a number. 4) Optional: in the Gemini section, start 'Why it matters' on its own paragraph to match the other sections, and in the IPO section consider adding the notes' point about how much capital frontier training needs. Keep every section within 120-200 words."
+    },
+    {
+      "criteria": [
+        {
+          "name": "Accuracy",
+          "score": 4,
+          "note": "Nearly every number, name and quote checks out against the notes: $83 price, $70-$78 range, 980M shares (~956M primary), Nov 18/19 dates, $111.50 open, $97.17 close, ~17%, ~$1.8T fully diluted, $81.3B vs SpaceX $75B, the Alpöge quotes, 14-part Lean archive, 41.6% to 67.2%, eight more OpenAI cases, the 'has not established' quote, and the Gemini quotes and eligibility. One overstatement: the short version says the RH proof is something 'nobody outside the company has confirmed yet'. The notes only say no confirmation appeared in the sources read, and the body says this correctly. Minor: the Amodei second quote drops the leading 'we' ('will not bend...'). It is still a verbatim substring, but it reads as truncated."
+        },
+        {
+          "name": "Importance",
+          "score": 5,
+          "note": "The four stories match the notes' picks: the record IPO, the RH proof claim, the OpenAI misalignment report and Gemini computer use. The rumour-like items (Signal, Apple listing, Meta price, Nvidia-Inception) are rightly skipped."
+        },
+        {
+          "name": "Insight",
+          "score": 4,
+          "note": "Each section has a clear 'Why it matters'. The RH section's point that verification comes down to compiling plus matching the formal statement is strong, and so is the OpenAI note that safety training may itself be a cause. The IPO 'why' is thin: it never uses the notes' point that the size of the raise shows how much capital frontier training needs. The Gemini 'why' also skips the notes' context that OpenAI, Anthropic and Meta already offer agentic desktop features."
+        },
+        {
+          "name": "Clarity",
+          "score": 4,
+          "note": "Plain and skimmable. Jargon is explained: fully diluted, Lean, context compaction. The short version is two sentences, and all four story sections are within 120-200 words (about 175, 199, 183 and 143). Worth watching has 2 bullets and there are 4 tags. Issues: the RH section is at the 200-word ceiling. The heading 'OpenAI publishes an agent that...' is ambiguous and can read as OpenAI releasing the agent. 'Reinforcement-learning training' is not explained. The short version covers only two of the four stories, which is allowed but leaves OpenAI and Gemini out of the summary."
+        },
+        {
+          "name": "Sourcing",
+          "score": 5,
+          "note": "Primary sources are linked inline at first mention: the Anthropic IPO release, remark.pdf, the Lean archive, the Anthropic zeta research post, the OpenAI alignment report and the Gemini release notes. Secondary sources are attributed by name. The front-matter sources list matches the 10 inline-cited links exactly, with no extras and none missing."
+        },
+        {
+          "name": "Restraint",
+          "score": 5,
+          "note": "No hype words. The RH claim is clearly framed as unverified, with the conflict-of-interest timing noted. The first-day volatility is stated plainly, and 'record' is backed by the notes. The Gemini line saying vendors 'are trying to limit the damage' is mild interpretation, not speculation presented as fact."
+        }
+      ],
+      "unsupported_claims": [
+        "which nobody outside the company has confirmed yet"
+      ],
+      "revision_instructions": "1) In the short version, scope the verification claim to the notes. For example: 'which no independent mathematician has confirmed in the sources checked so far.' 2) Restore the full Amodei quote: '...and \"we will not bend to either business nor political pressure.\"' 3) Rename the OpenAI heading so it can't be read as a product release, e.g. 'OpenAI reports an agent that planned to copy outgoing email'. Add a few words explaining reinforcement learning (training by reward and penalty). 4) Optional: trim a few words from the RH section, which sits at the 200-word limit. Strengthen the IPO 'why it matters' with the notes' point about how much capital frontier training needs. Add the TechCrunch context that OpenAI, Anthropic and Meta already ship agentic desktop features, citing and listing that TechCrunch URL if used. Do not add any fact that is not in memory/notes/2026-11-20.md."
+    },
+    {
+      "criteria": [
+        {
+          "name": "Accuracy",
+          "score": 4,
+          "note": "Nearly every number, name and quote checks out against the notes: $83 price, $70-$78 range, 980M shares (~956M primary), Nov 18/19 dates, $111.50 open, $97.17 close, ~17%, ~$1.8T fully diluted, $81.3B vs SpaceX $75B, the Alpöge quotes, 14-part Lean archive, 41.6% to 67.2%, eight more OpenAI cases, the 'has not established' quote, and the Gemini quotes and eligibility. One overstatement: the short version says the RH proof is something 'nobody outside the company has confirmed yet'. The notes only say no confirmation appeared in the sources read, and the body says this correctly. Minor: the Amodei second quote drops the leading 'we' ('will not bend...'). It is still a verbatim substring, but it reads as truncated."
+        },
+        {
+          "name": "Importance",
+          "score": 5,
+          "note": "The four stories match the notes' picks: the record IPO, the RH proof claim, the OpenAI misalignment report and Gemini computer use. The rumour-like items (Signal, Apple listing, Meta price, Nvidia-Inception) are rightly skipped."
+        },
+        {
+          "name": "Insight",
+          "score": 4,
+          "note": "Each section has a clear 'Why it matters'. The RH section's point that verification comes down to compiling plus matching the formal statement is strong, and so is the OpenAI note that safety training may itself be a cause. The IPO 'why' is thin: it never uses the notes' point that the size of the raise shows how much capital frontier training needs. The Gemini 'why' also skips the notes' context that OpenAI, Anthropic and Meta already offer agentic desktop features."
+        },
+        {
+          "name": "Clarity",
+          "score": 4,
+          "note": "Plain and skimmable. Jargon is explained: fully diluted, Lean, context compaction. The short version is two sentences, and all four story sections are within 120-200 words (about 175, 199, 183 and 143). Worth watching has 2 bullets and there are 4 tags. Issues: the RH section is at the 200-word ceiling. The heading 'OpenAI publishes an agent that...' is ambiguous and can read as OpenAI releasing the agent. 'Reinforcement-learning training' is not explained. The short version covers only two of the four stories, which is allowed but leaves OpenAI and Gemini out of the summary."
+        },
+        {
+          "name": "Sourcing",
+          "score": 5,
+          "note": "Primary sources are linked inline at first mention: the Anthropic IPO release, remark.pdf, the Lean archive, the Anthropic zeta research post, the OpenAI alignment report and the Gemini release notes. Secondary sources are attributed by name. The front-matter sources list matches the 10 inline-cited links exactly, with no extras and none missing."
+        },
+        {
+          "name": "Restraint",
+          "score": 5,
+          "note": "No hype words. The RH claim is clearly framed as unverified, with the conflict-of-interest timing noted. The first-day volatility is stated plainly, and 'record' is backed by the notes. The Gemini line saying vendors 'are trying to limit the damage' is mild interpretation, not speculation presented as fact."
+        }
+      ],
+      "unsupported_claims": [
+        "which nobody outside the company has confirmed yet"
+      ],
+      "revision_instructions": "1) In the short version, scope the verification claim to the notes. For example: 'which no independent mathematician has confirmed in the sources checked so far.' 2) Restore the full Amodei quote: '...and \"we will not bend to either business nor political pressure.\"' 3) Rename the OpenAI heading so it can't be read as a product release, e.g. 'OpenAI reports an agent that planned to copy outgoing email'. Add a few words explaining reinforcement learning (training by reward and penalty). 4) Optional: trim a few words from the RH section, which sits at the 200-word limit. Strengthen the IPO 'why it matters' with the notes' point about how much capital frontier training needs. Add the TechCrunch context that OpenAI, Anthropic and Meta already ship agentic desktop features, citing and listing that TechCrunch URL if used. Do not add any fact that is not in memory/notes/2026-11-20.md.",
+      "overall": 4.5
+    }
+  ],
+  "feed_health": {
+    "https://openai.com/news/rss.xml": {
+      "ok": true,
+      "fresh": 1
+    },
+    "https://deepmind.google/blog/rss.xml": {
+      "ok": true,
+      "fresh": 0
+    },
+    "https://blog.google/technology/ai/rss/": {
+      "ok": true,
+      "fresh": 2
+    },
+    "https://huggingface.co/blog/feed.xml": {
+      "ok": true,
+      "fresh": 1
+    },
+    "https://simonwillison.net/atom/everything/": {
+      "ok": true,
+      "fresh": 3
+    },
+    "https://www.technologyreview.com/topic/artificial-intelligence/feed": {
+      "ok": true,
+      "fresh": 0
+    },
+    "https://arstechnica.com/ai/feed/": {
+      "ok": true,
+      "fresh": 1
+    },
+    "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml": {
+      "ok": true,
+      "fresh": 10
+    },
+    "https://techcrunch.com/category/artificial-intelligence/feed/": {
+      "ok": true,
+      "fresh": 15
+    },
+    "https://the-decoder.com/feed/": {
+      "ok": true,
+      "fresh": 10
+    },
+    "https://hnrss.org/newest?q=AI+OR+LLM&points=150": {
+      "ok": true,
+      "fresh": 3
+    },
+    "https://rss.arxiv.org/rss/cs.CL": {
+      "ok": true,
+      "fresh": 30
+    }
+  }
+}
