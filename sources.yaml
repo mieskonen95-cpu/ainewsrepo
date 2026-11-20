@@ -1,0 +1,15 @@
+# Feeds the agent reads every run. quality: 1-5, higher = trusted more and read first.
+# The learning loop may add/remove feeds; every change is a git commit you can revert.
+feeds:
+  - {name: OpenAI News, url: "https://openai.com/news/rss.xml", quality: 5}
+  - {name: Google DeepMind, url: "https://deepmind.google/blog/rss.xml", quality: 5}
+  - {name: Google AI Blog, url: "https://blog.google/technology/ai/rss/", quality: 4}
+  - {name: Hugging Face Blog, url: "https://huggingface.co/blog/feed.xml", quality: 4}
+  - {name: Simon Willison, url: "https://simonwillison.net/atom/everything/", quality: 4}
+  - {name: MIT Technology Review AI, url: "https://www.technologyreview.com/topic/artificial-intelligence/feed", quality: 4}
+  - {name: Ars Technica AI, url: "https://arstechnica.com/ai/feed/", quality: 4}
+  - {name: The Verge AI, url: "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", quality: 3}
+  - {name: TechCrunch AI, url: "https://techcrunch.com/category/artificial-intelligence/feed/", quality: 3}
+  - {name: The Decoder, url: "https://the-decoder.com/feed/", quality: 3}
+  - {name: Hacker News (AI, 150+ points), url: "https://hnrss.org/newest?q=AI+OR+LLM&points=150", quality: 3}
+  - {name: arXiv cs.CL, url: "https://rss.arxiv.org/rss/cs.CL", quality: 2}
