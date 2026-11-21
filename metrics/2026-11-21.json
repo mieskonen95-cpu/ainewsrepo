@@ -1,0 +1,171 @@
+{
+  "date": "2026-11-21",
+  "published": true,
+  "title": "A Claude-assisted Riemann Hypothesis proof compiles in Lean, and a human proof of the generalized version appears",
+  "final_score": 4.5,
+  "path": "content/posts/2026-11-21-riemann-lean-proof-compiles.md",
+  "reviews": [
+    {
+      "criteria": [
+        {
+          "name": "Accuracy",
+          "score": 4,
+          "note": "Nearly every fact, number, name and quote checks out against the notes: Alpöge quote, Sutherland/Lean Zulip, Vakil quotes and the 8-hour update, METR's 1 hour, 27 hours, 3.6 months and 9% figures, OpenAI's 54.0% to 0.2% and the account-scale quote, and Signal's quotes. Two problems. First, 'In both cases, AI is now involved in the checking as well as the proving' is wrong: Masullo's proof is 'all human, with no AI', and the Lean check of Alpöge's proof is done by software, not AI. Second, the notes never describe Vakil as a mathematician. Uncertainty about the Lean statement is flagged well."
+        },
+        {
+          "name": "Importance",
+          "score": 5,
+          "note": "These are the four strongest items in the notes, and the skipped items (unverified study, verbal tariff threat, unconfirmed reports, rumour) were rightly left out."
+        },
+        {
+          "name": "Insight",
+          "score": 4,
+          "note": "Each story has a real 'why it matters', and the point about compiling versus whether the formal statement matches RH is especially good. The Riemann 'why it matters' ends on an inaccurate generalisation, and the METR line 'where agents are safe to leave alone' goes a bit past the notes' 'how much autonomy to give agents'."
+        },
+        {
+          "name": "Clarity",
+          "score": 4,
+          "note": "Plain language, and jargon (Lean formalization, time horizon, distillation, chain of thought) is explained. Story sections run 168, 174, 169 and 139 words, all within 120-200. Worth watching has 2 bullets and there are 3 tags. However, 'The short version' is three sentences, not the two the playbook requires."
+        },
+        {
+          "name": "Sourcing",
+          "score": 5,
+          "note": "Every story links its primary source inline at first mention, and the six frontmatter sources exactly match the six inline links."
+        },
+        {
+          "name": "Restraint",
+          "score": 5,
+          "note": "Calm, no hype words. Hedges like 'reportedly compiles', 'proposed proof' and 'no source checked here addresses that yet' are used appropriately."
+        }
+      ],
+      "unsupported_claims": [
+        "In both cases, AI is now involved in the checking as well as the proving.",
+        "mathematician Ravi Vakil"
+      ],
+      "revision_instructions": "1) Make 'The short version' exactly two sentences, for example by merging or dropping the METR sentence. 2) In the Riemann 'Why it matters', delete 'In both cases, AI is now involved in the checking as well as the proving.' If you want to keep the point, restate it accurately from the notes: AI helped find Alpöge's proof, and AI models helped people find problems in Masullo's human-written proof. 3) Change 'mathematician Ravi Vakil' to just 'Ravi Vakil', because the notes don't describe his role. Keep the Riemann section at 120 words or more after the edits. 4) Optional: in METR, soften 'where agents are safe to leave alone' to something like 'how much autonomy to give agents', and say 'the verifiable subset of its new TH2 tasks' to match the source."
+    },
+    {
+      "criteria": [
+        {
+          "name": "Accuracy",
+          "score": 5,
+          "note": "Every quote, number and name checks out against the notes: Alpöge quote and Lean-only release, Sutherland and the Zulip compile confirmations, Vakil's 'all human, with no AI' and the update about 8 hours later, the Clay prize, METR's 1 hour to 27 hours, 3.6-month doubling and 9% human baselines, OpenAI's 54.0% to 0.2% and its weekly enforcement range, DeepSeek and Moonshot, and Signal's iOS 27, Android, macOS and Whittaker quotes. The post plainly says the Lean statement has not been checked against RH. Pairing Gemini Intelligence with Android and Siri with iOS is a reasonable reading of the notes."
+        },
+        {
+          "name": "Importance",
+          "score": 5,
+          "note": "The four stories match the notes' picks: two claimed RH/GRH proofs plus a compile confirmation, a much-cited capability metric update, frontier-lab security against distillation, and a major encrypted app pushing back on OS-level agents. Unverified and rumour items were rightly left out."
+        },
+        {
+          "name": "Insight",
+          "score": 4,
+          "note": "Good why-it-matters lines. The best ones are the difference between 'compiles' and 'states the right theorem', and AI on both the proving and checking side. The METR and Signal takeaways are thinner. METR's 'the gap tells you how much autonomy to give agents' is a bit glib, and it could use the notes' caveat that public evidence can't rule out drastic AI R&D acceleration. Signal could mention the Microsoft Recall precedent."
+        },
+        {
+          "name": "Clarity",
+          "score": 4,
+          "note": "Plain language, with jargon explained (Lean, time horizon, distillation, chain of thought). Sections run 173, 167, 169 and 139 words, all inside 120-200. The two-sentence short version, Worth watching (2 bullets) and tags (3) all follow the playbook. Weakness: the short version covers only the Riemann story and never signals that METR, OpenAI and Signal are also in the brief."
+        },
+        {
+          "name": "Sourcing",
+          "score": 4,
+          "note": "Every story links its primary source inline at first mention. The sources list exactly matches the six cited links. Minor gaps: the Clay prize claim has no link (the notes give claymath.org/millennium-problems via anthropic.com/research/riemann-zeta), and the Lean archive and the Masullo proof PDF, both primary artifacts, aren't linked."
+        },
+        {
+          "name": "Restraint",
+          "score": 5,
+          "note": "Calm and hedged throughout: 'claimed', 'reportedly compiles', 'proposed proof', and an explicit note that the formal statement isn't verified. No hype words and no speculation presented as fact."
+        }
+      ],
+      "unsupported_claims": [],
+      "revision_instructions": "No factual removals needed. Optional polish: (1) Rewrite the short version so its second sentence also nods to the other stories (METR time horizons, OpenAI anti-distillation, Signal), still in two sentences. (2) Link the Clay Millennium Prize mention to https://www.claymath.org/millennium-problems/ (or the Anthropic riemann-zeta page) and add it to the sources list. Optionally link the Masullo PDF too, and add any new links to sources. (3) In the METR why-it-matters, replace 'the gap tells you how much autonomy to give agents' with something closer to the notes (the gap 'matters for how much autonomy to give agents'). Consider adding METR's quoted caveat that current public evidence can't rule out drastic AI R&D acceleration. (4) Optionally add the Microsoft Recall precedent to the Signal section, which has room (139 words)."
+    },
+    {
+      "criteria": [
+        {
+          "name": "Accuracy",
+          "score": 5,
+          "note": "Every quote, number and name checks out against the notes: Alpöge quote and Lean-only release, Sutherland and the Zulip compile confirmations, Vakil's 'all human, with no AI' and the update about 8 hours later, the Clay prize, METR's 1 hour to 27 hours, 3.6-month doubling and 9% human baselines, OpenAI's 54.0% to 0.2% and its weekly enforcement range, DeepSeek and Moonshot, and Signal's iOS 27, Android, macOS and Whittaker quotes. The post plainly says the Lean statement has not been checked against RH. Pairing Gemini Intelligence with Android and Siri with iOS is a reasonable reading of the notes."
+        },
+        {
+          "name": "Importance",
+          "score": 5,
+          "note": "The four stories match the notes' picks: two claimed RH/GRH proofs plus a compile confirmation, a much-cited capability metric update, frontier-lab security against distillation, and a major encrypted app pushing back on OS-level agents. Unverified and rumour items were rightly left out."
+        },
+        {
+          "name": "Insight",
+          "score": 4,
+          "note": "Good why-it-matters lines. The best ones are the difference between 'compiles' and 'states the right theorem', and AI on both the proving and checking side. The METR and Signal takeaways are thinner. METR's 'the gap tells you how much autonomy to give agents' is a bit glib, and it could use the notes' caveat that public evidence can't rule out drastic AI R&D acceleration. Signal could mention the Microsoft Recall precedent."
+        },
+        {
+          "name": "Clarity",
+          "score": 4,
+          "note": "Plain language, with jargon explained (Lean, time horizon, distillation, chain of thought). Sections run 173, 167, 169 and 139 words, all inside 120-200. The two-sentence short version, Worth watching (2 bullets) and tags (3) all follow the playbook. Weakness: the short version covers only the Riemann story and never signals that METR, OpenAI and Signal are also in the brief."
+        },
+        {
+          "name": "Sourcing",
+          "score": 4,
+          "note": "Every story links its primary source inline at first mention. The sources list exactly matches the six cited links. Minor gaps: the Clay prize claim has no link (the notes give claymath.org/millennium-problems via anthropic.com/research/riemann-zeta), and the Lean archive and the Masullo proof PDF, both primary artifacts, aren't linked."
+        },
+        {
+          "name": "Restraint",
+          "score": 5,
+          "note": "Calm and hedged throughout: 'claimed', 'reportedly compiles', 'proposed proof', and an explicit note that the formal statement isn't verified. No hype words and no speculation presented as fact."
+        }
+      ],
+      "unsupported_claims": [],
+      "revision_instructions": "No factual removals needed. Optional polish: (1) Rewrite the short version so its second sentence also nods to the other stories (METR time horizons, OpenAI anti-distillation, Signal), still in two sentences. (2) Link the Clay Millennium Prize mention to https://www.claymath.org/millennium-problems/ (or the Anthropic riemann-zeta page) and add it to the sources list. Optionally link the Masullo PDF too, and add any new links to sources. (3) In the METR why-it-matters, replace 'the gap tells you how much autonomy to give agents' with something closer to the notes (the gap 'matters for how much autonomy to give agents'). Consider adding METR's quoted caveat that current public evidence can't rule out drastic AI R&D acceleration. (4) Optionally add the Microsoft Recall precedent to the Signal section, which has room (139 words).",
+      "overall": 4.5
+    }
+  ],
+  "feed_health": {
+    "https://openai.com/news/rss.xml": {
+      "ok": true,
+      "fresh": 3
+    },
+    "https://deepmind.google/blog/rss.xml": {
+      "ok": true,
+      "fresh": 0
+    },
+    "https://blog.google/technology/ai/rss/": {
+      "ok": true,
+      "fresh": 1
+    },
+    "https://huggingface.co/blog/feed.xml": {
+      "ok": true,
+      "fresh": 2
+    },
+    "https://simonwillison.net/atom/everything/": {
+      "ok": true,
+      "fresh": 4
+    },
+    "https://www.technologyreview.com/topic/artificial-intelligence/feed": {
+      "ok": true,
+      "fresh": 1
+    },
+    "https://arstechnica.com/ai/feed/": {
+      "ok": true,
+      "fresh": 4
+    },
+    "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml": {
+      "ok": true,
+      "fresh": 9
+    },
+    "https://techcrunch.com/category/artificial-intelligence/feed/": {
+      "ok": true,
+      "fresh": 13
+    },
+    "https://the-decoder.com/feed/": {
+      "ok": true,
+      "fresh": 10
+    },
+    "https://hnrss.org/newest?q=AI+OR+LLM&points=150": {
+      "ok": false,
+      "fresh": 0
+    },
+    "https://rss.arxiv.org/rss/cs.CL": {
+      "ok": false,
+      "fresh": 0
+    }
+  }
+}
